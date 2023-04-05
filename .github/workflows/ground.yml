@@ -9,7 +9,7 @@ outputs:
   time: # id of output
     description: 'Ground was met at'
 runs:
-  on: ubuntu-latest
+  on: push
   using: 'docker'
   image: 'Dockerfile'
   args:
