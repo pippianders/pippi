@@ -3,17 +3,24 @@ on:
   push:
     branches:
     - '*'
-description: 'Ground was met at'
-inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
-    required: true
-    default: 'Ground'
-outputs:
-  time: # id of output
-    description: 'Ground was met at'
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.who-to-greet }}
+on:
+  push:
+    branches:
+    - '*'
+
+jobs:
+    compile:
+        name: Do it
+        runs-on: ubuntu-latest
+        steps:
+          - name: Check out the repo
+            uses: actions/checkout@v2
+          - name: Dockerdo
+            uses: pippianders/docker-run-action@v3
+            with:
+                image: pippianders/cleaver:latest
+                options: -v ${{ github.workspace }}:/var/www
+                run: |
+                    composer install
+                    npm install
+                    npm run production
