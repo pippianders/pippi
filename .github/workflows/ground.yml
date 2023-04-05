@@ -1,4 +1,8 @@
 name: 'Hello Ground'
+on:
+  push:
+    branches:
+    - '*'
 description: 'Ground was met at'
 inputs:
   who-to-greet:  # id of input
@@ -9,7 +13,6 @@ outputs:
   time: # id of output
     description: 'Ground was met at'
 runs:
-  on: push
   using: 'docker'
   image: 'Dockerfile'
   args:
