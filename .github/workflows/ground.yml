@@ -1,8 +1,5 @@
 name: 'Hello Ground'
-on:
-  push:
-    branches:
-    - '*'
+
 on:
   push:
     branches:
