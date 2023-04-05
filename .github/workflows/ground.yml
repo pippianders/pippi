@@ -1,0 +1,15 @@
+name: 'Hello Ground'
+description: 'Ground was met at'
+inputs:
+  who-to-greet:  # id of input
+    description: 'Who to greet'
+    required: true
+    default: 'Ground'
+outputs:
+  time: # id of output
+    description: 'Ground was met at'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.who-to-greet }}
